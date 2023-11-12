@@ -49,7 +49,7 @@ watch(
       </form>
     </div>
 
-    <ul>
+    <transition-group tag="ul" name="list" appear>
       <li
         v-for="(todo, index) in storeTodo.getTodoList"
         :key="todo.id"
@@ -66,6 +66,6 @@ watch(
           <button @click="storeTodo.deleteTodoById(todo.id)">&#10060;</button>
         </div>
       </li>
-    </ul>
+    </transition-group>
   </div>
 </template>

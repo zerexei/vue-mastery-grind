@@ -10,10 +10,22 @@ const store = useStore();
 </script>
 
 <template>
-  <h1>Hello World</h1>
-  <h2>Counter {{ store.counter }}</h2>
-
-  <img :src="Logo" alt="vue logo" />
-  <img src="/vite.svg" alt="vue logo" />
-  <button @click="store.incrementCounter">Increment</button>
+  <div>
+    <h1>Hello World</h1>
+    <h2>Counter {{ store.counter }}</h2>
+    <p
+      v-for="x in [{ color: 'red' }]"
+      class="default-css"
+      :class="[
+        true && 'text-center',
+        { green: 'bg-[green]', red: 'bg-[red]' }[x.color],
+        true ? ['text-blue class2'] : ['text-red-400'],
+      ]"
+    >
+      Lorem
+    </p>
+    <img :src="Logo" alt="vue logo" />
+    <img src="/vite.svg" alt="vue logo" />
+    <button @click="store.incrementCounter">Increment</button>
+  </div>
 </template>

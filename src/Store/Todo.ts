@@ -1,3 +1,4 @@
+import { useLocalStorage } from '@vueuse/core';
 import { acceptHMRUpdate, defineStore } from 'pinia';
 import { ref, computed, reactive } from 'vue';
 // import {useFooStore} from '@/Stores/Foo';
@@ -12,7 +13,7 @@ export const useTodoStore = defineStore('todo', () => {
   // const foo = useFooStore() // nested store
 
   // ++> State
-  const todoList = ref<Todo[]>([]);
+  const todoList = ref(useLocalStorage('todo-list', []));
 
   const state = reactive({
     search: ""
@@ -33,6 +34,7 @@ export const useTodoStore = defineStore('todo', () => {
   // create
   const storeTodo = (todo: Todo) => {
     todoList.value.unshift(todo);
+
   }
   // delete
   const deleteTodoById = (todoId: number) => {
