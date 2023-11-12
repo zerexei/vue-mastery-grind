@@ -33,12 +33,16 @@ const links = computed(() => [
     <div>
       <header class="mb-6">
         <nav class="flex justify-end gap-4">
-          <p v-for="link in links" :key="link.id">
+          <template v-for="link in links" :key="link.id">
             <router-link v-if="link.isShow" :to="link.url">
               {{ link.title }}
             </router-link>
-          </p>
-          <p v-if="storeAuth.isAuthenticated" @click="storeAuth.logout()" class="hover:text-red-400 cursor-pointer">
+          </template>
+          <p
+            v-if="storeAuth.isAuthenticated"
+            @click="storeAuth.logout()"
+            class="hover:text-red-400 cursor-pointer"
+          >
             Logout
           </p>
         </nav>
